@@ -1,0 +1,209 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "users": [
+    {
+      "firstName": "Lorena",
+      "lastName": "Papeša",
+      "phone": "0911939190",
+      "email": "lorena.papesa37@gmail.com",
+      "id": "1"
+    },
+    {
+      "firstName": "Pero",
+      "lastName": "Perić",
+      "phone": "0911234567",
+      "email": "peroperic@gmail.com",
+      "id": "2"
+    },
+    {
+      "firstName": "Zdenko",
+      "lastName": "Zdenkić",
+      "phone": "0981234567",
+      "email": "zdenko_zdenkic@gmail.com",
+      "id": "3"
+    },
+    {
+      "firstName": "Mirko",
+      "lastName": "Mirkić",
+      "phone": "0989876543",
+      "email": "mirko.mirkic@gmail.com",
+      "id": "4"
+    },
+    {
+      "firstName": "Ana",
+      "lastName": "Anić",
+      "phone": "0951122333",
+      "email": "ana.anic1@gmail.com",
+      "id": "5"
+    },
+    {
+      "firstName": "Iva",
+      "lastName": "Ivić",
+      "phone": "0995550555",
+      "email": "ivaivic123@gmail.com",
+      "id": "6"
+    },
+    {
+      "firstName": "Dora",
+      "lastName": "Dorić",
+      "phone": "0991115555",
+      "email": "d_doric5@gmail.com",
+      "id": "7"
+    },
+    {
+      "firstName": "Jozo",
+      "lastName": "Jozić",
+      "phone": "0971357973",
+      "email": "jozo1995@gmail.com",
+      "id": "8"
+    },
+    {
+      "firstName": "Božo",
+      "lastName": "Božić",
+      "phone": "0920246820",
+      "email": "bbozic0@gmail.com",
+      "id": "9"
+    },
+    {
+      "firstName": "Ivan",
+      "lastName": "Horvat",
+      "phone": "0913337775",
+      "email": "ivanhorvat96@gmail.com",
+      "id": "10"
+    },
+    {
+      "firstName": "Marko",
+      "lastName": "Markić",
+      "phone": "0981234567",
+      "email": "markomarkic@gmail.com",
+      "id": "11"
+    },
+    {
+      "firstName": "Maja",
+      "lastName": "Majić",
+      "phone": "0991234567",
+      "email": "mmajic@gmail.com",
+      "id": "12"
+    },
+    {
+      "id": "6c81",
+      "firstName": "a",
+      "lastName": "a",
+      "phone": "1",
+      "email": "a"
+    }
+  ],
+  "prehrana": [
+    {
+      "id": "1",
+      "userId": 1,
+      "vrijeme": "14:00",
+      "hrana": "pizza"
+    },
+    {
+      "userId": 2,
+      "vrijeme": "08:00",
+      "hrana": "jabuka",
+      "id": "2"
+    },
+    {
+      "userId": 12,
+      "vrijeme": "10:00",
+      "hrana": "sir",
+      "id": "3"
+    }
+  ],
+  "hrana": [
+    {
+      "id": "1",
+      "userId": 1,
+      "naziv": "pizza"
+    },
+    {
+      "id": "2",
+      "userId": 1,
+      "naziv": "ćevapi"
+    },
+    {
+      "id": "3",
+      "userId": 1,
+      "naziv": "burger"
+    },
+    {
+      "userId": 2,
+      "naziv": "jabuka",
+      "id": "4"
+    },
+    {
+      "userId": 2,
+      "naziv": "kruška",
+      "id": "5"
+    },
+    {
+      "userId": 2,
+      "naziv": "banana",
+      "id": "6"
+    },
+    {
+      "userId": 1,
+      "naziv": "tjestenina",
+      "id": "7"
+    },
+    {
+      "userId": 1,
+      "naziv": "lasagne",
+      "id": "8"
+    },
+    {
+      "userId": 1,
+      "naziv": "sir",
+      "id": "9"
+    },
+    {
+      "userId": 1,
+      "naziv": "šunka",
+      "id": "10"
+    },
+    {
+      "userId": 1,
+      "naziv": "jagode",
+      "id": "11"
+    },
+    {
+      "userId": 1,
+      "naziv": "špinat",
+      "id": "12"
+    },
+    {
+      "userId": 1,
+      "naziv": "čokolada",
+      "id": "13"
+    },
+    {
+      "userId": 12,
+      "naziv": "palačinke",
+      "id": "14"
+    },
+    {
+      "userId": 12,
+      "naziv": "sir",
+      "id": "15"
+    }
+  ]
+}

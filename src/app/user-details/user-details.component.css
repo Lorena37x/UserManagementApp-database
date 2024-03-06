@@ -1,0 +1,77 @@
+.user-details {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-info p {
+    margin: 5px 0;
+}
+
+.nutrition-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.meal-table {
+    width: 42%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.meal-table th, .meal-table td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.meal-table th {
+    background-color: #f2f2f2;
+}
+
+.meal-row:hover {
+    background-color: #f9f9f9;
+}
+
+.meal-type {
+    font-weight: bold;
+}
+.nutrition-wrapper {
+    display: flex;
+}
+.nutrition-data {
+    padding: 0 20px;
+}
+.nutrition-data h2 {
+    margin-right: 238px;
+}
+
+.button-2 h2 {
+    margin-right: 93px;
+}
+
+.button-3 h2 {
+    margin-right: 115px;
+}
+
+.container {
+    display: flex;
+  }
+  
+.table-container {
+flex: 2;
+}
+
+.food-data {
+    margin-top: 50px;
+    width: 50%;
+}
+
+.button h2 {
+    margin-right: 115px;
+}
+  

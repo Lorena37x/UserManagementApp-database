@@ -1,0 +1,65 @@
+<div *ngIf="userData" class="user-details">
+    <div class="nutrition-wrapper button">
+        <h2>Detalji</h2>
+    <button mat-raised-button (click)="goBack()">Natrag</button>
+    </div>
+    <div class="user-info">
+        <p><strong>Ime:</strong> {{ userData.firstName }}</p>
+        <p><strong>Prezime:</strong> {{ userData.lastName }}</p>
+        <p><strong>Broj telefona:</strong> {{ userData.phone }}</p>
+        <p><strong>E-mail:</strong> {{ userData.email }}</p>
+    </div>
+</div>
+      
+<div *ngIf="nutritionData" class="nutrition-data">
+    <div class="nutrition-wrapper button-2">
+        <h2>Prehrana</h2>
+    <button mat-raised-button color="primary" (click)="addNutrition()">Dodaj</button>
+    </div>
+    <table class="meal-table">
+        <thead>
+            <tr>
+                <th>Vrijeme</th>
+                <th>Hrana</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let meal of nutritionData">
+                <td>{{ meal.vrijeme }}</td>
+                <td>{{ meal.hrana }}</td>
+                <td>
+                  <button mat-icon-button color="primary" (click)="editNutrition(meal)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                  <button mat-icon-button color="warn" (click)="deleteNutrition(meal.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                </td>
+              </tr>
+        </tbody>
+    </table>
+
+<div *ngIf="foodData" class="food-data">
+    <div class="nutrition-wrapper button-3">
+    <h2>Hrana</h2>
+    <button mat-raised-button color="primary" (click)="addFood()">Dodaj</button>
+    </div>
+    <table class="meal-table food-table">
+        <thead>
+            <tr>
+                <th>Naziv hrane</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let food of foodData">
+                <td>{{ food.naziv }}</td>
+                <td>
+                    <button mat-icon-button color="warn" (click)="deleteFood(food.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

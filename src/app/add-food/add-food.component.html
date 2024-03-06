@@ -1,0 +1,15 @@
+<div mat-dialog-title>
+    <h1>Dodaj hranu</h1>
+</div>
+<form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Naziv hrane</mat-label>
+                <input matInput formControlName="hranaNaziv">
+            </mat-form-field>
+    <div mat-dialog-actions class="action">
+            <button mat-raised-button color="primary" type="submit">{{ 'Add' }}</button>
+            <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    </div>
+        
