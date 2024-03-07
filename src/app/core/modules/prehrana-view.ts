@@ -1,6 +1,6 @@
 export class PrehranaView {
-    "id": number;
-    "userId": number;
-    "vrijeme": string;
-    "hrana": string;
+    id?: number;
+    userId?: number;
+    vrijeme?: string;
+    hranaId?: number;
 }

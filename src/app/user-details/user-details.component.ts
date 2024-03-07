@@ -21,7 +21,7 @@ export class UserDetailsComponent implements OnInit {
   mealId!: number;
   userData!: UserView;
   nutritionData: PrehranaView[] = [];
-  foodData!: any;
+  foodData!: HranaView[];
 
   constructor(private route: ActivatedRoute, 
               private userService: UserService,
@@ -42,14 +42,14 @@ export class UserDetailsComponent implements OnInit {
         this.userData = user;
       });
 
-    this.userService.getNutritionData(this.userId).subscribe(
-      (nutrition: PrehranaView[]) => {
-        this.nutritionData = nutrition.sort((a, b) => Date.parse('01-01-2023 ' + a.vrijeme) -  Date.parse('01-01-2023 ' + b.vrijeme));
-      });
-
     this.userService.getFoodList(this.userId).subscribe(
       (food: HranaView[]) => {
         this.foodData = food;
+
+        this.userService.getNutritionData(this.userId).subscribe(
+          (nutrition: PrehranaView[]) => {
+            this.nutritionData = nutrition.sort((a, b) => Date.parse('01-01-2023 ' + a.vrijeme) -  Date.parse('01-01-2023 ' + b.vrijeme));
+          });
       });
   }
 
@@ -88,15 +88,17 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  deleteNutrition(mealId: number) {
-    this.userService.deleteNutrition(mealId).subscribe(
-      (response: any) => {
-        this.snackBar.open('Meal deleted!', 'Close', {
-          duration: 2000,
-        });
-        this.getUserData();
-      },
-    );
+  deleteNutrition(mealId?: number) {
+    if (mealId) {
+      this.userService.deleteNutrition(mealId).subscribe(
+        (response: any) => {
+          this.snackBar.open('Meal deleted!', 'Close', {
+            duration: 2000,
+          });
+          this.getUserData();
+        },
+      );
+    }
   }
 
   addFood() {
@@ -129,6 +131,12 @@ export class UserDetailsComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/user-management']);
+  }
+
+  mapHranaId2Name (hranaId?: number): string {
+    const hranaNaziv = this.foodData?.find(x => x.id == hranaId)?.naziv;
+
+    return hranaNaziv || '';
   }
 }
 

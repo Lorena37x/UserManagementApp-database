@@ -10,8 +10,8 @@
             </mat-form-field> 
             <mat-form-field>
                 <mat-label>Hrana</mat-label>
-                <mat-select formControlName="prehranaHrana">
-                    <mat-option *ngFor="let food of data.foodData" [value]="food.naziv">{{ food.naziv }}</mat-option>
+                <mat-select formControlName="prehranaHranaId">
+                    <mat-option *ngFor="let food of data.foodData" [value]="food.id">{{ food.naziv }}</mat-option>
                 </mat-select>
             </mat-form-field> 
         </div>

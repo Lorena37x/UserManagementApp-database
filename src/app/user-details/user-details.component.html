@@ -26,7 +26,7 @@
         <tbody>
             <tr *ngFor="let meal of nutritionData">
                 <td>{{ meal.vrijeme }}</td>
-                <td>{{ meal.hrana }}</td>
+                <td>{{ mapHranaId2Name(meal.hranaId) }}</td>
                 <td>
                   <button mat-icon-button color="primary" (click)="editNutrition(meal)">
                   <mat-icon>edit</mat-icon>

@@ -50,7 +50,7 @@ export class EditNutritionComponent implements OnInit {
         id: this.data.id,
         userId: this.data.userId,
         vrijeme: this.nutritionForm.value.prehranaVrijeme,
-        hrana:  this.nutritionForm.value.prehranaHrana
+        hranaId:  this.nutritionForm.value.prehranaHrana
       };
         
         this._userService.updateNutrition(this.data.id, updatedData).subscribe({
