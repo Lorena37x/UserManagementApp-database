@@ -126,7 +126,11 @@ export class UserDetailsComponent implements OnInit {
         });
         this.getUserData();
       },
-    );
+      (error: any) => {
+        this.snackBar.open('This food can not be deleted!', 'Close', {
+          duration: 2000,
+        });
+      });
   }
 
   goBack() {
