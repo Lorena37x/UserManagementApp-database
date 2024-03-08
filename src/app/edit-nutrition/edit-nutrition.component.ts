@@ -22,7 +22,7 @@ export class EditNutritionComponent implements OnInit {
   ) {
     this.nutritionForm = this.fb.group({
       prehranaVrijeme: this.data.nutritionData.vrijeme ?? '',
-      prehranaHrana: this.data.nutritionData.hrana ?? '',
+      prehranaHranaId: this.data.nutritionData.hranaId ?? '',
     });
   }
 
@@ -37,7 +37,7 @@ export class EditNutritionComponent implements OnInit {
     if (this.nutritionForm.valid) {
 
       const vrijeme = this.nutritionForm.get('prehranaVrijeme')?.value;
-      const hrana = this.nutritionForm.get('prehranaHrana')?.value;
+      const hrana = this.nutritionForm.get('prehranaHranaId')?.value;
 
       if (!(vrijeme && hrana)) {
         this._snackBar.open('Please fill in all required fields: time and food', 'Close', {
@@ -50,7 +50,7 @@ export class EditNutritionComponent implements OnInit {
         id: this.data.id,
         userId: this.data.userId,
         vrijeme: this.nutritionForm.value.prehranaVrijeme,
-        hranaId:  this.nutritionForm.value.prehranaHrana
+        hranaId:  this.nutritionForm.value.prehranaHranaId
       };
         
         this._userService.updateNutrition(this.data.id, updatedData).subscribe({

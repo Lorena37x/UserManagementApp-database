@@ -3,4 +3,5 @@ export class PrehranaView {
     userId?: number;
     vrijeme?: string;
     hranaId?: number;
+    hranaNaziv?: string;
 }

@@ -136,12 +136,6 @@ export class UserDetailsComponent implements OnInit {
   goBack() {
     this.router.navigate(['/user-management']);
   }
-
-  mapHranaId2Name (hranaId?: number): string {
-    const hranaNaziv = this.foodData?.find(x => x.id == hranaId)?.naziv;
-
-    return hranaNaziv || '';
-  }
 }
 
 
