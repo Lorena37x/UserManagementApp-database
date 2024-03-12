@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       sessionStorage.setItem('isLoggedIn', this.isLoggedIn + '')
      this.router.navigate(["user-management"]);
-    }else {
+    } else {
       this._snackBar.open('Username or password invalid!', 'Close', {
         duration: 2000,
       });

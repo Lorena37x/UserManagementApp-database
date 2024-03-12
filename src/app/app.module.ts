@@ -30,9 +30,12 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { AddNutritionComponent } from './add-nutrition/add-nutrition.component';
 import { EditNutritionComponent } from './edit-nutrition/edit-nutrition.component';
 import { AddFoodComponent } from './add-food/add-food.component';
+import { SetUsernameComponent } from './set-username/set-username.component';
+import { SetPasswordComponent } from './set-password/set-password.component';
+import { SetRoleComponent } from './set-role/set-role.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, UserManagementComponent, AddEditUserComponent, UserDataListComponent, ConfirmationDialogComponent, UserDetailsComponent, AddNutritionComponent, EditNutritionComponent, AddFoodComponent],
+  declarations: [AppComponent, LoginComponent, UserManagementComponent, AddEditUserComponent, UserDataListComponent, ConfirmationDialogComponent, UserDetailsComponent, AddNutritionComponent, EditNutritionComponent, AddFoodComponent, SetUsernameComponent, SetPasswordComponent, SetRoleComponent],
   imports: [BrowserModule, 
     FormsModule, 
     AppRoutingModule, 

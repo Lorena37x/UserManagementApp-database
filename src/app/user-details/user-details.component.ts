@@ -4,12 +4,17 @@ import { UserService } from '../services/user.service';
 import { AddNutritionComponent } from '../add-nutrition/add-nutrition.component';
 import { EditNutritionComponent } from '../edit-nutrition/edit-nutrition.component';
 import { MatDialog } from '@angular/material/dialog';
-import { PrehranaView } from '../core/modules/prehrana-view';
-import { UserView } from '../core/modules/user-view';
+import { PrehranaView } from '../core/models/prehrana-view';
+import { UserView } from '../core/models/user-view';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddFoodComponent } from '../add-food/add-food.component';
 import { Router } from '@angular/router';
-import { HranaView } from '../core/modules/hrana-view';
+import { HranaView } from '../core/models/hrana-view';
+import { UsernameView } from '../core/models/username-view';
+import { RoleView } from '../core/models/role-view';
+import { SetUsernameComponent } from '../set-username/set-username.component';
+import { SetPasswordComponent } from '../set-password/set-password.component';
+import { SetRoleComponent } from '../set-role/set-role.component';
 
 @Component({
   selector: 'app-user-details',
@@ -22,6 +27,8 @@ export class UserDetailsComponent implements OnInit {
   userData!: UserView;
   nutritionData: PrehranaView[] = [];
   foodData!: HranaView[];
+  usernameData!: UsernameView;
+  roleData!: RoleView;
 
   constructor(private route: ActivatedRoute, 
               private userService: UserService,
@@ -135,6 +142,45 @@ export class UserDetailsComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/user-management']);
+  }
+
+  setUsername(data: any) {
+    const dialogRef = this.dialog.open(SetUsernameComponent, {
+      data,
+    });
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getUserData();
+        }
+      },
+    });
+  }
+
+  setPassword(data: any) {
+    const dialogRef = this.dialog.open(SetPasswordComponent, {
+      data,
+    });
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getUserData();
+        }
+      },
+    });
+  }
+
+  setRole(data: any) {
+    const dialogRef = this.dialog.open(SetRoleComponent, {
+      data,
+    });
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getUserData();
+        }
+      },
+    });
   }
 }
 

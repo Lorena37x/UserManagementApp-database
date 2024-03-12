@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PrehranaView } from '../core/modules/prehrana-view';
-import { UserView } from '../core/modules/user-view';
-import { HranaView } from '../core/modules/hrana-view';
+import { PrehranaView } from '../core/models/prehrana-view';
+import { UserView } from '../core/models/user-view';
+import { HranaView } from '../core/models/hrana-view';
+import { UsernameView } from '../core/models/username-view';
+import { PasswordView } from '../core/models/password-view';
+import { RoleView } from '../core/models/role-view';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +63,17 @@ export class UserService {
 
   deleteFood(id: number): Observable<any> {
     return this._http.delete(`http://localhost:5013/Users/DeleteFood?foodId=${id}`);
+  }
+
+  setUsername(id: number, data: UsernameView): Observable<any> {
+    return this._http.put(`http://localhost:5013/Users/EditUsername?userId=${id}`, data);
+  }
+
+  setPassword(id: number, data: PasswordView): Observable<any> {
+    return this._http.put(`http://localhost:5013/Users/EditPassword?userId=${id}`, data);
+  }
+
+  setRole(id: number, data: RoleView): Observable<any> {
+    return this._http.put(`http://localhost:5013/Users/EditRole?userId=${id}`, data);
   }
 }

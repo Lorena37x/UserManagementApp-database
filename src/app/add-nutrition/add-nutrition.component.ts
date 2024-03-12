@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../services/user.service';
-import { PrehranaView } from '../core/modules/prehrana-view';
+import { PrehranaView } from '../core/models/prehrana-view';
 
 @Component({
   selector: 'app-add-nutrition',
