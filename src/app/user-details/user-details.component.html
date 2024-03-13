@@ -8,13 +8,9 @@
         <p><strong>Prezime:</strong> {{ userData.lastName }}</p>
         <p><strong>Broj telefona:</strong> {{ userData.phone }}</p>
         <p><strong>E-mail:</strong> {{ userData.email }}</p>
+        <p><strong>Korisničko ime:</strong> {{ userData.username }}</p>
+        <p><strong>Uloga:</strong> {{ userData.role }}</p>
     </div>
-    <!-- <div class="username-info">
-        <p><strong>Username:</strong> {{ usernameData.username }}</p>
-    </div>
-    <div class="role-info">
-        <p><strong>Role:</strong> {{ roleData.role }}</p>
-    </div> -->
         <button mat-raised-button (click)="setUsername(userId)">Uredi korisničko ime</button>
         <button mat-raised-button (click)="setPassword(userId)">Uredi lozinku</button>
         <button mat-raised-button (click)="setRole(userId)">Uredi ulogu</button>

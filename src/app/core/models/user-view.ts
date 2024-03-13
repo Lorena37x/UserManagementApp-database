@@ -4,4 +4,6 @@ export class UserView {
     lastName?: string;
     phone?: string;
     email?: string;
+    username?: string;
+    role?: string;
 }

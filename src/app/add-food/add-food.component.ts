@@ -45,7 +45,7 @@ export class AddFoodComponent {
     const newFood: HranaView = {
       id: this.data.id,
       userId: this.data.userId,
-      naziv:  this.foodForm.value.hranaNaziv
+      naziv: this.foodForm.value.hranaNaziv
     };
         
     this._userService.addFood(newFood).subscribe({

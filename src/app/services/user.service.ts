@@ -65,15 +65,15 @@ export class UserService {
     return this._http.delete(`http://localhost:5013/Users/DeleteFood?foodId=${id}`);
   }
 
-  setUsername(id: number, data: UsernameView): Observable<any> {
-    return this._http.put(`http://localhost:5013/Users/EditUsername?userId=${id}`, data);
+  setUsername(data: UsernameView): Observable<any> {
+    return this._http.post(`http://localhost:5013/Users/EditUsername`, data);
   }
 
-  setPassword(id: number, data: PasswordView): Observable<any> {
-    return this._http.put(`http://localhost:5013/Users/EditPassword?userId=${id}`, data);
+  setPassword(data: PasswordView): Observable<any> {
+    return this._http.post(`http://localhost:5013/Users/EditPassword`, data);
   }
 
-  setRole(id: number, data: RoleView): Observable<any> {
-    return this._http.put(`http://localhost:5013/Users/EditRole?userId=${id}`, data);
+  setRole(data: RoleView): Observable<any> {
+    return this._http.post(`http://localhost:5013/Users/EditRole`, data);
   }
 }

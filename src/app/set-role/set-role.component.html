@@ -1,1 +1,20 @@
-<p>set-role works!</p>
+<div mat-dialog-title>
+    <h1>Uloga</h1>
+</div>
+<form [formGroup]="roleForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Uloga</mat-label>
+                <mat-select formControlName="roleRole">
+                  <mat-option value="user">korisnik</mat-option>
+                  <mat-option value="admin">admin</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button color="primary" type="submit">{{ 'Save' }}</button>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    </div>
+</form>

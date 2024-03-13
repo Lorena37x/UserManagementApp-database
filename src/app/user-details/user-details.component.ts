@@ -15,6 +15,7 @@ import { RoleView } from '../core/models/role-view';
 import { SetUsernameComponent } from '../set-username/set-username.component';
 import { SetPasswordComponent } from '../set-password/set-password.component';
 import { SetRoleComponent } from '../set-role/set-role.component';
+import { PasswordView } from '../core/models/password-view';
 
 @Component({
   selector: 'app-user-details',
@@ -144,9 +145,9 @@ export class UserDetailsComponent implements OnInit {
     this.router.navigate(['/user-management']);
   }
 
-  setUsername(data: any) {
+  setUsername(userId: number) {
     const dialogRef = this.dialog.open(SetUsernameComponent, {
-      data,
+      data: ({userId: userId, username: ''} as UsernameView)
     });
     dialogRef.afterClosed().subscribe({
       next: (val) => {
@@ -157,9 +158,9 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  setPassword(data: any) {
+  setPassword(userId: number) {
     const dialogRef = this.dialog.open(SetPasswordComponent, {
-      data,
+      data: ({userId: userId, password: ''} as PasswordView)
     });
     dialogRef.afterClosed().subscribe({
       next: (val) => {
@@ -170,9 +171,9 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
-  setRole(data: any) {
+  setRole(userId: number) {
     const dialogRef = this.dialog.open(SetRoleComponent, {
-      data,
+      data: ({userId: userId, role: ''} as RoleView)
     });
     dialogRef.afterClosed().subscribe({
       next: (val) => {

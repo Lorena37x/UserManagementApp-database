@@ -5,7 +5,6 @@ import { UserService } from '../services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsernameView } from '../core/models/username-view';
-import { UserDetailsComponent } from '../user-details/user-details.component';
 
 @Component({
   selector: 'app-set-username',
@@ -13,6 +12,7 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
   styleUrls: ['./set-username.component.css']
 })
 export class SetUsernameComponent {
+
   usernameForm!: FormGroup
 
   constructor(
@@ -20,10 +20,11 @@ export class SetUsernameComponent {
     private _userService: UserService,
     private _snackBar: MatSnackBar,
     private _dialogRef: MatDialogRef<SetUsernameComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: UsernameView
   ) {
+    console.log(data)
     this.usernameForm = this.fb.group({
-      usernameUsername: this.data.usernameData.username
+      usernameUsername: this.data.username
     });
   }
 
@@ -45,12 +46,11 @@ export class SetUsernameComponent {
       }
     
     const newUsername: UsernameView = {
-      id: this.data.id,
       userId: this.data.userId,
-      username: this.usernameForm.value.usernameUsername
+      username: username
     };
         
-    this._userService.setUsername(this.data.id, newUsername).subscribe({
+    this._userService.setUsername(newUsername).subscribe({
       next: (val: any) => {
         this._snackBar.open('Username edited!', 'Close', { duration: 2000 });
         this._dialogRef.close(true);
