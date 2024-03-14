@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, CanLoad, Router } from '@angular/router';
+import { KONSTANTE } from '../core/helpers/consts';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
   }
 
   private checkAuth(): boolean {
-    let sessionLogin: string = sessionStorage.getItem('isLoggedIn') || 'false';
+    let sessionLogin: string = sessionStorage.getItem(KONSTANTE.IS_LOGGED_IN) || 'false';
     let isLoggedIn = sessionLogin == 'true' ? true : false;
     if (isLoggedIn) {
       return true;
@@ -33,7 +34,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
 
   logout(): void {
     // Clear any authentication status or user information
-    sessionStorage.setItem('isLoggedIn', 'false');
+    sessionStorage.setItem(KONSTANTE.IS_LOGGED_IN, 'false');
   }
 }
 

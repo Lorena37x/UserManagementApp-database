@@ -1,0 +1,4 @@
+export const KONSTANTE = {
+    IS_LOGGED_IN: 'IS_LOGGED_IN',
+    USER_LOGGED_IN: 'USER_LOGGED_IN'
+}

@@ -16,6 +16,7 @@ import { SetUsernameComponent } from '../set-username/set-username.component';
 import { SetPasswordComponent } from '../set-password/set-password.component';
 import { SetRoleComponent } from '../set-role/set-role.component';
 import { PasswordView } from '../core/models/password-view';
+import { KONSTANTE } from '../core/helpers/consts';
 
 @Component({
   selector: 'app-user-details',
@@ -30,6 +31,8 @@ export class UserDetailsComponent implements OnInit {
   foodData!: HranaView[];
   usernameData!: UsernameView;
   roleData!: RoleView;
+
+  userLoggedIn: UserView = JSON.parse(sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN) || '{}');
 
   constructor(private route: ActivatedRoute, 
               private userService: UserService,

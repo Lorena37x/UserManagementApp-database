@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserDataListComponent } from '../user-data-list/user-data-list.component';
 import { AuthGuardService } from '../auth-guard/auth-guard-service';
 import { Router } from '@angular/router';
+import { KONSTANTE } from '../core/helpers/consts';
 
 @Component({
   selector: 'app-user-management',
@@ -32,7 +33,8 @@ export class UserManagementComponent {
   }
 
   logout(): void {
-    sessionStorage.setItem('isLoggedIn', 'false');
+    sessionStorage.setItem(KONSTANTE.IS_LOGGED_IN, 'false');
+    sessionStorage.removeItem(KONSTANTE.USER_LOGGED_IN);
     this._router.navigate(['/login']);
   }
 }
