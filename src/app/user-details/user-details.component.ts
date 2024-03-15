@@ -186,6 +186,12 @@ export class UserDetailsComponent implements OnInit {
       },
     });
   }
+
+  logout(): void {
+    sessionStorage.setItem(KONSTANTE.IS_LOGGED_IN, 'false');
+    sessionStorage.removeItem(KONSTANTE.USER_LOGGED_IN);
+    this.router.navigate(['/login']);
+  }
 }
 
 
