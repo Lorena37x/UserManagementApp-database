@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CanActivate, CanActivateChild, CanLoad, Router } from '@angular/router';
 import { KONSTANTE } from '../core/helpers/consts';
+import { sequenceEqual } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad  {
+
+  static activator = () =>  { inject(AuthGuardService).canActivateRole() }
+
   constructor(private router: Router) {}
 
   canActivate(): boolean {
@@ -22,18 +26,25 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
 
   private checkAuth(): boolean {
     let sessionLogin: string = sessionStorage.getItem(KONSTANTE.IS_LOGGED_IN) || 'false';
-    let isLoggedIn = sessionLogin == 'true' ? true : false;
+    let isLoggedIn = sessionLogin === 'true'? true : false;
+
     if (isLoggedIn) {
       return true;
     } else {
-      // Redirect to the login page if the user is not authenticated
       this.router.navigate(['/login']);
       return false;
+    } 
+  }
+
+  canActivateRole() {
+    let sessionUserRole = JSON.parse(sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN) as any || undefined);
+
+    if (sessionUserRole.role !== 'admin') {
+      this.router.navigate(['/login'])
     }
   }
 
   logout(): void {
-    // Clear any authentication status or user information
     sessionStorage.setItem(KONSTANTE.IS_LOGGED_IN, 'false');
   }
 }
