@@ -1,13 +1,13 @@
 <div *ngIf="userData" class="user-details">
     <div class="nutrition-wrapper button">
         <h2>Detalji</h2>
-    <div *ngIf="userLoggedIn.role === 'admin'">
-            <button mat-raised-button (click)="goBack()">Natrag</button>
+        <div *ngIf="userLoggedIn.role === 'admin'">
+                <button mat-raised-button (click)="goBack()">Natrag</button>
+        </div>
+        <div *ngIf="userLoggedIn.role === 'user'">
+            <button mat-raised-button (click)="logout()">Log out</button>
+        </div>
     </div>
-    <div *ngIf="userLoggedIn.role === 'user'">
-        <button mat-raised-button (click)="logout()">Log out</button>
-    </div>
-</div>
     <div class="user-info">
         <p><strong>Ime:</strong> {{ userData.firstName }}</p>
         <p><strong>Prezime:</strong> {{ userData.lastName }}</p>
@@ -26,7 +26,9 @@
 <div *ngIf="nutritionData" class="nutrition-data">
     <div class="nutrition-wrapper button-2">
         <h2>Prehrana</h2>
-    <button mat-raised-button color="primary" (click)="addNutrition()">Dodaj</button>
+        <div *ngIf="userLoggedIn.role === 'admin'">
+            <button mat-raised-button color="primary" (click)="addNutrition()">Dodaj</button>
+        </div>
     </div>
     <table class="meal-table">
         <thead>
@@ -40,21 +42,26 @@
                 <td>{{ meal.vrijeme }}</td>
                 <td>{{ meal.hranaNaziv }}</td>
                 <td>
-                  <button mat-icon-button color="primary" (click)="editNutrition(meal)">
-                  <mat-icon>edit</mat-icon>
+                <div *ngIf="userLoggedIn.role === 'admin'">
+                <button mat-icon-button color="primary" (click)="editNutrition(meal)">
+                <mat-icon>edit</mat-icon>
                 </button>
-                  <button mat-icon-button color="warn" (click)="deleteNutrition(meal.id)">
+                <button mat-icon-button color="warn" (click)="deleteNutrition(meal.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
+                </div>
                 </td>
-              </tr>
+            </tr>
         </tbody>
     </table>
+</div>
 
 <div *ngIf="foodData" class="food-data">
     <div class="nutrition-wrapper button-3">
-    <h2>Hrana</h2>
-    <button mat-raised-button color="primary" (click)="addFood()">Dodaj</button>
+        <h2>Hrana</h2>
+        <div *ngIf="userLoggedIn.role === 'admin'">
+            <button mat-raised-button color="primary" (click)="addFood()">Dodaj</button>
+        </div>
     </div>
     <table class="meal-table food-table">
         <thead>
@@ -66,9 +73,11 @@
             <tr *ngFor="let food of foodData">
                 <td>{{ food.naziv }}</td>
                 <td>
+                <div *ngIf="userLoggedIn.role === 'admin'">
                     <button mat-icon-button color="warn" (click)="deleteFood(food.id)">
                     <mat-icon>delete</mat-icon>
                 </button>
+                </div>
                 </td>
             </tr>
         </tbody>
