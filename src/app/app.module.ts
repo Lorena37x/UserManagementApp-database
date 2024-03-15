@@ -24,8 +24,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { AddNutritionComponent } from './add-nutrition/add-nutrition.component';
 import { EditNutritionComponent } from './edit-nutrition/edit-nutrition.component';
@@ -33,6 +33,7 @@ import { AddFoodComponent } from './add-food/add-food.component';
 import { SetUsernameComponent } from './set-username/set-username.component';
 import { SetPasswordComponent } from './set-password/set-password.component';
 import { SetRoleComponent } from './set-role/set-role.component';
+import { LoaderInterceptor } from './core/interceptors/interceptors';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, UserManagementComponent, AddEditUserComponent, UserDataListComponent, ConfirmationDialogComponent, UserDetailsComponent, AddNutritionComponent, EditNutritionComponent, AddFoodComponent, SetUsernameComponent, SetPasswordComponent, SetRoleComponent],
@@ -56,7 +57,7 @@ import { SetRoleComponent } from './set-role/set-role.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
