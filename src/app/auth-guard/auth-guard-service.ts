@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { CanActivate, CanActivateChild, CanLoad, Router } from '@angular/router';
 import { KONSTANTE } from '../core/helpers/consts';
-import { sequenceEqual } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +26,10 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
   private checkAuth(): boolean {
     let sessionLogin: string = sessionStorage.getItem(KONSTANTE.IS_LOGGED_IN) || 'false';
     let isLoggedIn = sessionLogin === 'true'? true : false;
+
+    console.log('ovo')
+    console.log(sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN))
+    console.log(btoa('sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN)'))
 
     if (isLoggedIn) {
       return true;
