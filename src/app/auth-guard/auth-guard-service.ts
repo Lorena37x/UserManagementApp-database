@@ -27,10 +27,6 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
     let sessionLogin: string = sessionStorage.getItem(KONSTANTE.IS_LOGGED_IN) || 'false';
     let isLoggedIn = sessionLogin === 'true'? true : false;
 
-    console.log('ovo')
-    console.log(sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN))
-    console.log(btoa('sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN)'))
-
     if (isLoggedIn) {
       return true;
     } else {

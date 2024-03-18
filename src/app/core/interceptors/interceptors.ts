@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest } from '@angular/c
 import { finalize, Observable } from 'rxjs';
 import { LoaderService } from 'src/app/services/loader.service';
 import { KONSTANTE } from '../helpers/consts';
+import { Buffer } from "buffer";
 
 @Injectable()
 
@@ -11,10 +12,6 @@ export class LoaderInterceptor implements HttpInterceptor {
   constructor(private loader: LoaderService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    console.log('interceptor')
-    console.log(req)
-    console.log(btoa('Lorena'))
 
     this.loader.show();
 
@@ -25,8 +22,10 @@ export class LoaderInterceptor implements HttpInterceptor {
   }
 
   headers(req: HttpRequest<any>): HttpRequest<any> {
+    
     const isLoggedIn: boolean = (sessionStorage.getItem(KONSTANTE.IS_LOGGED_IN) || 'false') === 'true';
-    const userBase64 = btoa(sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN) || '{}');
+    const authUser: string = sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN) || '{}';
+    const userBase64 = Buffer.from(authUser).toString('base64');
     const headers = {
       'Autorization': 'Bearer ' + userBase64
     };
