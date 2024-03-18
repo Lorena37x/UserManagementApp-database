@@ -8,8 +8,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'user-management', component: UserManagementComponent, canActivate: [AuthGuardService, AuthGuardService.activator] },
-  { path: 'user-details/:userId', component: UserDetailsComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: 'user-details/:userId', component: UserDetailsComponent, canActivate: [AuthGuardService, AuthGuardService.activator] },
+  { path: '', redirectTo: '/user-management', pathMatch: 'full' }
 ];
 
 @NgModule({
