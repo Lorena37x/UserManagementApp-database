@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -13,14 +13,14 @@ export class AddEditUserComponent implements OnInit {
   addUser: FormGroup
 
   constructor(
-    private _fb: FormBuilder, 
-    private _userService: UserService, 
-    private _snackBar: MatSnackBar,
-    private _dialogRef: MatDialogRef<AddEditUserComponent>,
+    private fb: FormBuilder, 
+    private userService: UserService, 
+    private snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<AddEditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   
   ) {
-    this.addUser = this._fb.group({
+    this.addUser = this.fb.group({
       firstName: "",
       lastName: "",
       phone: "",
@@ -46,7 +46,7 @@ export class AddEditUserComponent implements OnInit {
       const email = this.addUser.get('email')?.value;
 
       if (!(firstName && lastName && phone && email)) {
-        this._snackBar.open('Please fill in all required fields: name, surname, phone number, and email.', 'Close', {
+        this.snackBar.open('Please fill in all required fields: name, surname, phone number, and email.', 'Close', {
           duration: 3000,
         });
         return;
@@ -56,24 +56,24 @@ export class AddEditUserComponent implements OnInit {
         const phoneNumber = this.addUser.get('phone')!.value;
         if (this.isPhoneNumberValid(phoneNumber)) {
           if (this.data) {
-            this._userService.updateUser(this.data.id, this.addUser.value).subscribe({
+            this.userService.updateUser(this.data.id, this.addUser.value).subscribe({
               next: (val: any) => {
-                this._snackBar.open('User updated!', 'Close', {
+                this.snackBar.open('User updated!', 'Close', {
                   duration: 2000,
                 });
-                this._dialogRef.close(true);
+                this.dialogRef.close(true);
               },
               error: (err: any) => {
                 console.error(err);
               },
             });
           } else {
-            this._userService.addUser(this.addUser.value).subscribe({
+            this.userService.addUser(this.addUser.value).subscribe({
               next: (val: any) => {
-                this._snackBar.open('User added!', 'Close', {
+                this.snackBar.open('User added!', 'Close', {
                   duration: 2000,
                 });
-                this._dialogRef.close(true);
+                this.dialogRef.close(true);
               },
               error: (err: any) => {
                 console.error(err);
@@ -81,7 +81,7 @@ export class AddEditUserComponent implements OnInit {
             });
           }
         } else {
-          this._snackBar.open('Please enter a valid phone number with only numbers, +, and space.', 'Close', {
+          this.snackBar.open('Please enter a valid phone number with only numbers, +, and space.', 'Close', {
             duration: 3000,
           });
         }  

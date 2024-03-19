@@ -5,7 +5,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   selector: 'app-confirmation-dialog',
   templateUrl: 'confirmation-dialog.component.html',
 })
-
 export class ConfirmationDialogComponent {
 
   constructor(

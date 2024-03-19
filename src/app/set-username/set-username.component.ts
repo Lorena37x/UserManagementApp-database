@@ -17,9 +17,9 @@ export class SetUsernameComponent {
 
   constructor(
     private fb: FormBuilder,
-    private _userService: UserService,
-    private _snackBar: MatSnackBar,
-    private _dialogRef: MatDialogRef<SetUsernameComponent>,
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<SetUsernameComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UsernameView
   ) {
     console.log(data)
@@ -39,7 +39,7 @@ export class SetUsernameComponent {
     const username = this.usernameForm.get('usernameUsername')?.value;
 
       if (!username) {
-        this._snackBar.open('Please fill in all required fields!', 'Close', {
+        this.snackBar.open('Please fill in all required fields!', 'Close', {
           duration: 3000,
         });
         return;
@@ -50,10 +50,10 @@ export class SetUsernameComponent {
       username: username
     };
         
-    this._userService.setUsername(newUsername).subscribe({
+    this.userService.setUsername(newUsername).subscribe({
       next: (val: any) => {
-        this._snackBar.open('Username edited!', 'Close', { duration: 2000 });
-        this._dialogRef.close(true);
+        this.snackBar.open('Username edited!', 'Close', { duration: 2000 });
+        this.dialogRef.close(true);
       },
       error: (err: any) => {
         console.error(err);

@@ -17,9 +17,9 @@ export class SetPasswordComponent {
 
   constructor(
     private fb: FormBuilder,
-    private _userService: UserService,
-    private _snackBar: MatSnackBar,
-    private _dialogRef: MatDialogRef<SetPasswordComponent>,
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<SetPasswordComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PasswordView
   ) {
     console.log(data)
@@ -39,7 +39,7 @@ export class SetPasswordComponent {
     const password = this.passwordForm.get('passwordPassword')?.value;
 
       if (!password) {
-        this._snackBar.open('Please fill in all required fields!', 'Close', {
+        this.snackBar.open('Please fill in all required fields!', 'Close', {
           duration: 3000,
         });
         return;
@@ -50,10 +50,10 @@ export class SetPasswordComponent {
       password: password
     };
         
-    this._userService.setPassword(newPassword).subscribe({
+    this.userService.setPassword(newPassword).subscribe({
       next: (val: any) => {
-        this._snackBar.open('Password edited!', 'Close', { duration: 2000 });
-        this._dialogRef.close(true);
+        this.snackBar.open('Password edited!', 'Close', { duration: 2000 });
+        this.dialogRef.close(true);
       },
       error: (err: any) => {
         console.error(err);

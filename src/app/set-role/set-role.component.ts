@@ -17,9 +17,9 @@ export class SetRoleComponent {
 
   constructor(
     private fb: FormBuilder,
-    private _userService: UserService,
-    private _snackBar: MatSnackBar,
-    private _dialogRef: MatDialogRef<SetRoleComponent>,
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<SetRoleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: RoleView
   ) {
     console.log(data)
@@ -41,7 +41,7 @@ export class SetRoleComponent {
     console.log(role)
 
       if (!role) {
-        this._snackBar.open('Please fill in all required fields!', 'Close', {
+        this.snackBar.open('Please fill in all required fields!', 'Close', {
           duration: 3000,
         });
         return;
@@ -54,10 +54,10 @@ export class SetRoleComponent {
 
     console.log(newRole)
         
-    this._userService.setRole(newRole).subscribe({
+    this.userService.setRole(newRole).subscribe({
       next: (val: any) => {
-        this._snackBar.open('Role edited!', 'Close', { duration: 2000 });
-        this._dialogRef.close(true);
+        this.snackBar.open('Role edited!', 'Close', { duration: 2000 });
+        this.dialogRef.close(true);
       },
       error: (err: any) => {
         console.error(err);

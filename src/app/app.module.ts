@@ -8,9 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { AddEditUserComponent } from './add-edit-user/add-edit-user.component';
 import { UserDataListComponent } from './user-data-list/user-data-list.component';
-import { AppRoutingModule } from './app-routing.module';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { AuthGuardService } from './auth-guard/auth-guard-service';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { AddNutritionComponent } from './add-nutrition/add-nutrition.component';
+import { EditNutritionComponent } from './edit-nutrition/edit-nutrition.component';
+import { AddFoodComponent } from './add-food/add-food.component';
+import { SetUsernameComponent } from './set-username/set-username.component';
+import { SetPasswordComponent } from './set-password/set-password.component';
+import { SetRoleComponent } from './set-role/set-role.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,14 +30,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthGuardService } from './auth-guard/auth-guard-service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { AddNutritionComponent } from './add-nutrition/add-nutrition.component';
-import { EditNutritionComponent } from './edit-nutrition/edit-nutrition.component';
-import { AddFoodComponent } from './add-food/add-food.component';
-import { SetUsernameComponent } from './set-username/set-username.component';
-import { SetPasswordComponent } from './set-password/set-password.component';
-import { SetRoleComponent } from './set-role/set-role.component';
 import { LoaderInterceptor } from './core/interceptors/interceptors';
 
 @NgModule({

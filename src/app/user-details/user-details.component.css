@@ -40,14 +40,21 @@
 .meal-type {
     font-weight: bold;
 }
+
 .nutrition-wrapper {
     display: flex;
 }
+
 .nutrition-data {
     padding: 0 20px;
 }
+
 .nutrition-data h2 {
     margin-right: 238px;
+}
+
+.button h2 {
+    margin-right: 115px;
 }
 
 .button-2 h2 {
@@ -70,9 +77,5 @@ flex: 2;
     margin-top: 50px;
     width: 50%;
     margin-left: 20px;
-}
-
-.button h2 {
-    margin-right: 115px;
 }
   

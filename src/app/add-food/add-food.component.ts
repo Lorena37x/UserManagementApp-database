@@ -15,9 +15,9 @@ export class AddFoodComponent {
 
   constructor(
     private fb: FormBuilder,
-    private _userService: UserService,
-    private _snackBar: MatSnackBar,
-    private _dialogRef: MatDialogRef<AddFoodComponent>,
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<AddFoodComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.foodForm = this.fb.group({
@@ -36,7 +36,7 @@ export class AddFoodComponent {
     const hrana = this.foodForm.get('hranaNaziv')?.value;
 
       if (!hrana) {
-        this._snackBar.open('Please fill in all required fields!', 'Close', {
+        this.snackBar.open('Please fill in all required fields!', 'Close', {
           duration: 3000,
         });
         return;
@@ -48,10 +48,10 @@ export class AddFoodComponent {
       naziv: this.foodForm.value.hranaNaziv
     };
         
-    this._userService.addFood(newFood).subscribe({
+    this.userService.addFood(newFood).subscribe({
       next: (val: any) => {
-        this._snackBar.open('Food added!', 'Close', { duration: 2000 });
-        this._dialogRef.close(true);
+        this.snackBar.open('Food added!', 'Close', { duration: 2000 });
+        this.dialogRef.close(true);
       },
       error: (err: any) => {
         console.error(err);

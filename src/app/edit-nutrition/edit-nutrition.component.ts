@@ -15,9 +15,9 @@ export class EditNutritionComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private _userService: UserService,
-    private _snackBar: MatSnackBar,
-    private _dialogRef: MatDialogRef<EditNutritionComponent>,
+    private userService: UserService,
+    private snackBar: MatSnackBar,
+    private dialogRef: MatDialogRef<EditNutritionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.nutritionForm = this.fb.group({
@@ -40,7 +40,7 @@ export class EditNutritionComponent implements OnInit {
       const hrana = this.nutritionForm.get('prehranaHranaId')?.value;
 
       if (!(vrijeme && hrana)) {
-        this._snackBar.open('Please fill in all required fields: time and food', 'Close', {
+        this.snackBar.open('Please fill in all required fields: time and food', 'Close', {
           duration: 3000,
         });
         return;
@@ -53,10 +53,10 @@ export class EditNutritionComponent implements OnInit {
         hranaId:  this.nutritionForm.value.prehranaHranaId
       };
         
-        this._userService.updateNutrition(this.data.id, updatedData).subscribe({
+        this.userService.updateNutrition(this.data.id, updatedData).subscribe({
           next: (val: any) => {
-            this._snackBar.open('Meal updated!', 'Close', { duration: 2000 });
-            this._dialogRef.close(true);
+            this.snackBar.open('Meal updated!', 'Close', { duration: 2000 });
+            this.dialogRef.close(true);
           },
           error: (err: any) => {
             console.error(err);
