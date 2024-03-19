@@ -27,7 +27,7 @@ export class LoaderInterceptor implements HttpInterceptor {
     const authUser: string = sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN) || '{}';
     const userBase64 = Buffer.from(authUser).toString('base64');
     const headers = {
-      'Autorization': 'Bearer ' + userBase64
+      'Authorization': 'Bearer ' + userBase64
     };
 
     if (isLoggedIn) {
