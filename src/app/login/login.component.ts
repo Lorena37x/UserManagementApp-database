@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserView } from '../core/models/user-view';
 import { KONSTANTE } from '../core/helpers/consts';
+import { AuthService } from '../services/auth-service.service';
+import { LoginView } from '../core/models/login-view';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
     private snackBar: MatSnackBar,
-    private http: HttpClient) {
+    private authService: AuthService) {
     let sessionLogin: string = sessionStorage.getItem(KONSTANTE.IS_LOGGED_IN) || 'false';
     this.isLoggedIn = sessionLogin == 'true' ? true : false;
   }
@@ -32,12 +33,12 @@ export class LoginComponent implements OnInit {
 
   login() : void {
 
-    const loginData = {
+    const loginData: LoginView = {
       username: this.username,
       password: this.password,
     };
 
-    this.http.post<UserView>('http://localhost:5013/Users/Login', loginData)
+    this.authService.login(loginData)
     .subscribe(
       (response) => {
         this.isLoggedIn = true;

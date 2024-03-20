@@ -38,7 +38,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
   canActivateRole() {
     let sessionUserRole = JSON.parse(sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN) as any || undefined);
 
-    if (sessionUserRole.role !== 'admin') {
+    if (sessionUserRole.role !== 'admin' && sessionUserRole.role !== 'user') {
       this.router.navigate(['/login'])
     }
   }

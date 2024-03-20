@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { UserManagementService } from '../services/user-management.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsernameView } from '../core/models/username-view';
@@ -17,7 +17,7 @@ export class SetUsernameComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private userService: UserManagementService,
     private snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<SetUsernameComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UsernameView

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { UserManagementService } from '../services/user-management.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -14,7 +14,7 @@ export class AddEditUserComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder, 
-    private userService: UserService, 
+    private userService: UserManagementService, 
     private snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<AddEditUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,

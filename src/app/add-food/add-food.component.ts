@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserService } from '../services/user.service';
+import { UserManagementService } from '../services/user-management.service';
 import { HranaView } from '../core/models/hrana-view';
 
 @Component({
@@ -15,7 +15,7 @@ export class AddFoodComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private userService: UserManagementService,
     private snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<AddFoodComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any

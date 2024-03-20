@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserManagementService } from '../services/user-management.service';
 import { AddNutritionComponent } from '../add-nutrition/add-nutrition.component';
 import { EditNutritionComponent } from '../edit-nutrition/edit-nutrition.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,6 +17,7 @@ import { SetPasswordComponent } from '../set-password/set-password.component';
 import { SetRoleComponent } from '../set-role/set-role.component';
 import { PasswordView } from '../core/models/password-view';
 import { KONSTANTE } from '../core/helpers/consts';
+import { MyAccountService } from '../services/my-account.service';
 
 @Component({
   selector: 'app-user-details',
@@ -35,7 +36,8 @@ export class UserDetailsComponent implements OnInit {
   userLoggedIn: UserView = JSON.parse(sessionStorage.getItem(KONSTANTE.USER_LOGGED_IN) || '{}');
 
   constructor(private route: ActivatedRoute, 
-              private userService: UserService,
+              private userManagementService: UserManagementService,
+              private myAccountService: MyAccountService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
               private router: Router) {}
@@ -48,20 +50,38 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getUserData() {
-    this.userService.getUserData(this.userId).subscribe(
+
+    if (this.userLoggedIn.role === 'admin') {
+    this.userManagementService.getUserData(this.userId).subscribe(
       (user: UserView) => {
         this.userData = user;
       });
 
-    this.userService.getFoodList(this.userId).subscribe(
+    this.userManagementService.getFoodList(this.userId).subscribe(
       (food: HranaView[]) => {
         this.foodData = food;
 
-        this.userService.getNutritionData(this.userId).subscribe(
+        this.userManagementService.getNutritionData(this.userId).subscribe(
           (nutrition: PrehranaView[]) => {
             this.nutritionData = nutrition.sort((a, b) => Date.parse('01-01-2023 ' + a.vrijeme) -  Date.parse('01-01-2023 ' + b.vrijeme));
           });
       });
+    } else {
+    this.myAccountService.getUserData(this.userId).subscribe(
+      (user: UserView) => {
+        this.userData = user;
+      });
+
+    this.myAccountService.getFoodList(this.userId).subscribe(
+      (food: HranaView[]) => {
+        this.foodData = food;
+
+        this.myAccountService.getNutritionData(this.userId).subscribe(
+          (nutrition: PrehranaView[]) => {
+            this.nutritionData = nutrition.sort((a, b) => Date.parse('01-01-2023 ' + a.vrijeme) -  Date.parse('01-01-2023 ' + b.vrijeme));
+          });
+      });
+    }
   }
 
   addNutrition() {
@@ -101,7 +121,7 @@ export class UserDetailsComponent implements OnInit {
 
   deleteNutrition(mealId?: number) {
     if (mealId) {
-      this.userService.deleteNutrition(mealId).subscribe(
+      this.userManagementService.deleteNutrition(mealId).subscribe(
         (response: any) => {
           this.snackBar.open('Meal deleted!', 'Close', {
             duration: 2000,
@@ -130,7 +150,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   deleteFood(foodId: number) {
-    this.userService.deleteFood(foodId).subscribe(
+    this.userManagementService.deleteFood(foodId).subscribe(
       (response: any) => {
         this.snackBar.open('Food deleted!', 'Close', {
           duration: 2000,

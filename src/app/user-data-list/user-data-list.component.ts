@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserManagementService } from '../services/user-management.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditUserComponent } from '../add-edit-user/add-edit-user.component';
@@ -19,7 +19,7 @@ export class UserDataListComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
 
   constructor(
-    private userService: UserService,
+    private userService: UserManagementService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private router: Router,
